@@ -19,7 +19,7 @@ def solve_quadratic(a, b, c):
         return f"Roots are: {real} + {imag}i and {real} - {imag}i"
 
 a = float(input("a: "))
-b = float(input("b: ") # missing a ) on purpose to throw error
+b = float(input("b: ")) # i removed a ) to throw error in the demo
 c = float(input("c: "))
 
 print(solve_quadratic(a, b, c))
