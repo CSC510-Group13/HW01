@@ -20,10 +20,21 @@ jobs:
       uses: actions/setup-python@v3
       with:
         python-version: "3.13"
-    - name: Install dependencies
+    - name: SetUp Coverage
       run: |
-        python3 -m pip install --upgrade pip
-        python3 -m pip install pytest
+          pip install genbadge[coverage]
+          pip install coverage
+    - name: Test with pytest
+      run: |
+        pip install pytest pytest-cov coveralls
+        coverage run -m pytest test_myfile.py
+        coveralls --service=github-actions
+      env:
+        COVERALLS_REPO_TOKEN: ${{ secrets.COVERALLS_REPO_TOKEN }}
+    #- name: Install dependencies
+      #run: |
+        #python3 -m pip install --upgrade pip
+        #python3 -m pip install pytest
         # pip install pytest-cov
         # if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
         pytest
