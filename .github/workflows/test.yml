@@ -22,8 +22,8 @@ jobs:
         python-version: "3.13"
     - name: SetUp Coverage
       run: |
-          pip install genbadge[coverage]
-          pip install coverage
+        pip install genbadge[coverage]
+        pip install coverage
     - name: Test with pytest
       run: |
         pip install pytest pytest-cov coveralls
